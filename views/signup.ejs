@@ -1,0 +1,70 @@
+<%- include("partials/header"); -%>
+    <div class="signupContainer">
+        <form class="signupForm"method="POST"action="/signup">
+            <div class="forminputtag">
+                <input type="text" name="name" placeholder="Enter Your Name"required>
+                <input type="text" name="homeAddress" placeholder="Enter Your Home Address" required>
+                <input type="email" name="email" placeholder="Enter Your Email" required>
+                <input type="text" name="phone" placeholder="Enter Your Contact Number" required>
+                <input type="password" name="password" placeholder="Enter Your Password" required>
+                <input type="date" name="dob" placeholder="Enter Your Home Age" required>
+            </div>
+            <div class="signupYourReligion">
+                <label class="radioOuterContainer">Male
+                    <input name="gender" type="radio" checked="true"value="m">
+                    <span class="radioInnerContainer">
+                        <span class="radioSpan"><i class="fas fa-male"></i></span>
+                    </span>
+                </label>
+                <label class="radioOuterContainer">Female
+                    <input name="gender" type="radio" value="f">
+                    <span class="radioInnerContainer">
+                        <span class="radioSpan"><i class="fas fa-female"></i></span>
+                    </span>
+                </label>
+                <label class="radioOuterContainer">Other
+                    <input name="gender" type="radio" value="o">
+                    <span class="radioInnerContainer">
+                        <span class="radioSpan">👨🏻</span>
+                    </span>
+                </label>
+            </div>
+            <div class="forminputtag">
+                <input type="text" name="fatherName" placeholder="Enter Your Father Name" required>
+                <input type="text" name="fatherPhone"
+                placeholder="Fathers Phone number" required>
+                <input type="text" name="motherName" placeholder="Enter Your Mother Name" required>
+                <input type="text" name="motherPhone" placeholder="Enter Your Mother Phone" required>
+            </div>
+            <div class="signupYourReligion">
+                <label class="radioOuterContainer">Hinduism
+                    <input name="religion" type="radio" checked="true" value="hinduism">
+                    <span class="radioInnerContainer">
+                        <span class="radioSpan"><i class="fas fa-om"></i></span>
+                    </span>
+                </label>
+                <label class="radioOuterContainer">Sikhism
+                    <input name="religion" type="radio" value="sikhism">
+                    <span class="radioInnerContainer">
+                        <span class="radioSpan"><i class="fas fa-khanda"></i></span>
+                    </span>
+                </label>
+                <label class="radioOuterContainer">Christian
+                    <input name="religion" type="radio" value="christian">
+                    <span class="radioInnerContainer">
+                        <span class="radioSpan"><i class="fas fa-cross"></i></span>
+                    </span>
+                </label>
+                <label class="radioOuterContainer">Islam
+                    <input name="religion" type="radio" value="islam">
+                    <span class="radioInnerContainer">
+                        <span class="radioSpan"><i class="fas fa-kaaba"></i></span>
+                    </span>
+                </label>
+            </div>
+            <input type="submit" value="signup">
+            <p class="redirectingmsgandlink">Already have an account? <a href="/login">Login</a></p>
+        </form>
+    </div>
+</body>
+</html>

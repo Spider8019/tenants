@@ -1,0 +1,46 @@
+<%- include("partials/header"); -%>
+<div class="registerAsOwnerContainer">
+    <form class=""action="/registerasowner" method="POST">
+        <div>
+            <input type="text" name="residenceName" placeholder="Residence Name" required>
+            <input type="text" name="ownerName" placeholder="Owner Name" required>
+            <input type="text" name="ownerPhone" placeholder="Owner contact number" required>
+            <input type="email"name="ownerMail" placeholder="Owner Mail" required>
+        </div>
+            <input type="password" name="ownerPassword"
+            placeholder="Owner Password" required>
+        <div class="signupYourReligion">
+            <label class="radioOuterContainer">Hinduism
+                <input name="religion" type="radio" checked="true" value="hinduism">
+                <span class="radioInnerContainer">
+                    <span class="radioSpan"><i class="fas fa-om"></i></span>
+                </span>
+            </label>
+            <label class="radioOuterContainer">Sikhism
+                <input name="religion" type="radio" value="sikhism">
+                <span class="radioInnerContainer">
+                    <span class="radioSpan"><i class="fas fa-khanda"></i></span>
+                </span>
+            </label>
+            <label class="radioOuterContainer">Christian
+                <input name="religion" type="radio" value="christian">
+                <span class="radioInnerContainer">
+                    <span class="radioSpan"><i class="fas fa-cross"></i></span>
+                </span>
+            </label>
+            <label class="radioOuterContainer">Islam
+                <input name="religion" type="radio" value="islam">
+                <span class="radioInnerContainer">
+                    <span class="radioSpan"><i class="fas fa-kaaba"></i></span>
+                </span>
+            </label>
+        </div>
+        <div style="margin-bottom:2rem;">
+            <input type="text" name="owneran" placeholder="Owner Account Number" required>
+            <input type="text" name="ownerifsc" placeholder="IFSC Code"required>
+        </div>
+        <input type="submit" value="Register as owner">
+    </form>
+</div>
+</body>
+</html>

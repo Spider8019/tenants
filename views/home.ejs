@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <!-- css custom stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- jquery cdn link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- title -->
+    <title>Home</title>
+
+</head>
+<body>
+        <div class="intro">
+            <div class="introText">
+                <h1>Tenets society presents</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nesciunt deleniti atque hic repudiandae,</p>
+                <div class="introTextLinks">
+                    <BUTTON class="linkone link"id="startAsOwner" onclick="asOwnerModal()" >As Owner</BUTTON>
+                    <BUTTON class="linktwo link">As Tenants</BUTTON>
+                </div>
+            </div>
+        </div>
+
+        <div class="newRoomsContainer">
+            <h1>Recently Created</h1>
+            <div class="newRooms">
+            <% for(var i=0;i<newRooms.length;i++){ %>
+               <div class="newRoom">
+                    <div class="newRoomImg" style="background:url('data:image/<%=newRooms[i].roomImg.contentType%>;base64,<%=newRooms[i].roomImg.data.toString('base64')%>') no-repeat center;background-size:cover;">
+                    </div>
+                    <div class="newRoomText">
+                       <h1>INR <%= newRooms[i].rent %></h1>
+                       <p class="createOnNewRoom">Created on <%= newRooms[i].createdAt.toISOString().slice(0,10) %></p>
+                       <p style="font-size:0.8rem;"><%= newRooms[i].address %></p>
+                        <p class="createOnNewRoom">Looking for <%= newRooms[i].lookingfor %> of <%= newRooms[i].religionallowed %>
+                        </p>
+                        <p class="roomname">
+                            Room Name <%= newRooms[i].name %>
+                        </p>
+                       <div class="newRoomOwner">
+                           <div class="newRoomOwnerImg">
+                                <img src="data:image/<%=newOwners[i].ownerAvatar.contentType%>;base64,<%=newOwners[i].ownerAvatar.data.toString('base64')%>">
+                           </div>
+                           <p><%= newOwners[i].ownerName %><br><span><%= newOwners[i].ownerEmail %></span></p>
+                       </div>
+
+                    </div>
+               </div>
+            <% } %>
+            </div>
+        </div>
+        <div class="yourlocation">
+            <h4>You are accesing it from</h4>
+            <div>
+                <div>
+                    <p class="gradient-text" style="display:inline-block;">Longitude</p>
+                    <p id="longitude"></p>
+                </div>
+                <div>
+                    <p class="gradient-text" style="display:inline-block;">Latitude</p>
+                    <p id="latitude"></p>
+                </div>
+            </div>
+        </div>
+        <section class="asOwnerModal">
+            <div class="owner">
+                <p>As owner</p>
+                <div>
+                    <a href="/loginowner">Login</a>
+                    <a href="/registerasowner">Signup</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="searchByLocation">
+            <div class="searchBar">
+                <p>Search By Location</p>
+                <div>       
+                    <input type="text" id="searchby" placeholder="Search by">
+                        <div class="inputgif">
+                            <img src="./images/igf.gif">
+                        </div>
+                </div>
+            </div>
+            <div id="result">
+                <div class="resultPreSearchText"><p>Try to find rooms in your searched place</p>
+                <h3 class="gradient-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. </h3>
+                <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
+                <h1>Try it :)</h1>
+            </div>
+            </div>
+        </section>
+        <div class="intro-text">
+            <h4>You are accesing it from Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut vitae eos ducimus facere
+                nam corrupti soluta quia debitis libero molestias?</h4>
+            <br><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, libero!</p>
+            
+        </div>
+
+        <section class="ownersSection">
+            <h1>Our Trusted Members</h1>
+            <div class="ownershome">
+                <% for(var i=0;i<owners.length;i++){ %>
+                    <div class="ownerhome">
+                        <div class="ownerhomeimg">
+                            <img src="data:image/<%=owners[i].ownerAvatar.contentType%>;base64,<%=owners[i].ownerAvatar.data.toString('base64')%>">
+                        </div>
+                    <h1><%= owners[i].ownerName %></h1>
+                    <p><%= owners[i].residenceName %></p>
+                    </div>
+                <% } %>
+            </div>
+        </section>
+</body>
+
+
+    <script>
+   $(document).ready(function () {
+       console.log($('#searchby').val())
+       $("#searchby").keydown(function(){
+            $.ajax({
+                url: '/searchby',
+                data: {searchBy: $("#searchby").val()},
+                type: 'GET',
+                dataType:"html",
+                success: function (data) {
+                   $("#result").empty();
+                   var array=JSON.parse(data)
+
+                   if(array.length>0){
+                   array.forEach((item)=>{
+                       
+                    var places=""
+                        for(var i=0;i<item.nearByPlaces.length;i++){
+                          if(item.nearByPlaces[i].toLowerCase().includes($('#searchby').val().toLowerCase()))
+                           {places+=(item.nearByPlaces[i].replace(RegExp($('#searchby').val(),'i'), '<b style="color:Red">'+$('#searchby').val()+'</b>')+"("+item.nearByDistance[i]+") ");}
+                        }
+                        $("#result").append("<div class='searchByRoom animate flipInX'>    <div class='profileownerroomtext'><p class='profileownerroomtextlf'>"+places+"</p><h1 class='gradient-text' style='padding:1rem;'>INR"+item.rent+"</h1 ><p>"+item.name+"</p><p class='profileownerroomtextlf'>"+item.address+"<br><br>Available rooms "+item.countRoom+"</p></div ></div>") })}
+                    else
+                     $("#result").append("<div class='noMatchFound'><p> Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.</p><h1>No Match Found :(</h1></div>")
+                  },
+                error: function (xhr, status, error) {
+                    alert('Error: ' + error.message);
+                },
+            });
+        })
+    });
+
+    $(document).ready(function () {
+            $("#startAsOwner").click(function(){
+                $(".asOwnerModal").show(1)
+            })
+        })
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target ==document.querySelector(".asOwnerModal")) {
+            document.querySelector(".asOwnerModal").style.display = "none";
+        }
+    }
+
+    // getting the position of user 
+    var longitude="",latitude=""
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            alert("Geolocation is not supported by this browser.")
+        }
+
+    function showPosition(position) {
+        longitude=position.coords.longitude
+        latitude=position.coords.latitude
+        document.getElementById("longitude").innerHTML=position.coords.longitude
+        document.getElementById("latitude").innerHTML = position.coords.latitude
+    }
+
+</script>
+</html>

@@ -1,0 +1,10 @@
+<%- include("partials/header"); -%>
+<div class="loginOwnerContainer">
+    <form action="/loginowner" method="POST">
+        <div style="margin-bottom:2rem;">
+            <input type="email" name="email"placeholder="Owner Email" required>
+            <input type="password" name="password" placeholder="Owner Password " required>
+        </div>
+      <input  type="submit" value="login">
+    </form>
+</div>

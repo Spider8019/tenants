@@ -1,0 +1,898 @@
+/* importing google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.pinky {
+  background: orange;
+}
+/* global variables */
+:root {
+  --base-color: black;
+  --base-sec-color: white;
+  --font-family: Nanum Gothic;
+}
+::selection {
+  background: rgba(255, 166, 0, 0.733);
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, red, orange);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+a {
+  text-decoration: none;
+}
+/* repeating classes */
+.gradient-text {
+  background: -webkit-linear-gradient(45deg, red, orange);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+input[type="submit"] {
+  padding: 1rem 3rem;
+  color: white;
+  border: none;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  border-radius: 0.3rem;
+  background: linear-gradient(45deg, red, rgb(255, 115, 0));
+}
+.link {
+  border-radius: 0.4rem;
+  padding: 0.8rem 3rem;
+  display: inline-block;
+  color: var(--base-sec-color);
+}
+.linkone {
+  background: linear-gradient(45deg, red, rgb(255, 115, 0));
+  border: 2px solid red;
+}
+.linktwo {
+  background: transparent;
+  color: red;
+  border: 2px solid red;
+}
+.radioOuterContainer {
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 13px;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  user-select: none;
+}
+
+.radioOuterContainer .radioInnerContainer {
+  display: block;
+  font-size: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: #eee;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+/* Hide the browser's default checkbox */
+.radioSpan {
+  display: none;
+}
+.radioSpan i {
+  color: white;
+}
+.radioOuterContainer input:checked ~ .radioInnerContainer .radioSpan {
+  display: block;
+}
+.radioOuterContainer input:checked ~ .radioInnerContainer {
+  box-shadow: 1px 1px 10px black;
+  background: linear-gradient(45deg, red, orange);
+}
+.radioOuterContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+/* On mouse-over, add a grey background color */
+.radioOuterContainer:hover input:not(:checked) ~ .radioInnerContainer {
+  background-color: #ccc;
+}
+
+/* global declaration */
+body {
+  font-family: var(--font-family);
+}
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: Center;
+  height: 4rem;
+  background: var(--base-color);
+  border-bottom: 1px solid var(--base-sec-color);
+}
+#navbar p {
+  margin: 0 2rem;
+  color: var(--base-sec-color);
+  font-size: 1.5rem;
+}
+nav {
+  display: flex;
+  width: 30%;
+  justify-content: space-around;
+}
+nav > a {
+  display: inline-block;
+  margin: 0.5rem;
+  color: var(--base-sec-color);
+}
+
+/* home intro section */
+.intro {
+  background: linear-gradient(transparent, black),
+    url("images/chain.jpg") no-repeat right;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  height: 100vh;
+}
+.introText {
+  color: var(--base-sec-color);
+  width: 40vw;
+  margin-left: 6rem;
+}
+.introText > h1 {
+  font-size: 5rem;
+  font-weight: 800;
+}
+.introText > p {
+  margin: 2rem 0;
+  letter-spacing: 2px;
+}
+.introTextLinks {
+  padding: 2rem 0;
+}
+
+/* yourlocation  */
+.yourlocation {
+  background: rgb(51, 51, 51);
+  padding: 2rem 3rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: Center;
+}
+.yourlocation > div > div > p {
+  color: white;
+  font-size: 1rem;
+}
+.yourlocation > div > div > p:first-child {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+/* signup form */
+.signupContainer {
+  height: calc(100vh - 4rem);
+  background: black;
+  display: grid;
+  place-items: center;
+}
+.signupForm {
+  align-items: stretch;
+  padding: 2rem;
+  display: grid;
+  place-items: center;
+}
+.signupForm > div > input:not(.signupForm > div > input[type="submit"]) {
+  margin: 0.5rem;
+  background: transparent;
+  color: white;
+  border: none;
+  border-bottom: 2px solid white;
+  width: 250px;
+  height: 2.5rem;
+  padding: 0.5rem;
+  outline: none;
+}
+.signupYourReligion {
+  padding: 2rem;
+  display: block;
+}
+.forminputtag {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* profile page */
+.profile {
+  background-attachment: fixed;
+  padding: 1rem;
+  background: black;
+  color: white;
+}
+.profileDetailContent {
+  width: 50vw;
+  margin: 2rem 5rem;
+}
+.profileLevel1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: Center;
+  margin-bottom: 2rem;
+}
+.userphoto {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border: 2px solid black;
+}
+.userphoto img {
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+.userphoto > p {
+  font-size: 5rem;
+  font-weight: bold;
+  color: white;
+}
+.basicProfileDetail h1 {
+  padding: 1rem 0;
+  font-size: 4rem;
+  text-transform: capitalize;
+  border-bottom: 2px solid white;
+}
+.basicProfileDetail p {
+  padding-top: 0.5rem;
+}
+
+.updateProfileFormContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  place-items: center;
+  background: rgba(126, 126, 126, 0.774);
+  backdrop-filter: blur(5px);
+  z-index: 100;
+}
+.createRoomCard > button,
+.updateProfileFormContainer > button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  transform: rotate(45deg);
+  background: none;
+  font-size: 1.5rem;
+  outline: none;
+  border: none;
+  color: white;
+}
+.updateProfileFormContainer form {
+  background: black;
+  color: White;
+  padding: 1rem;
+  border-radius: 0.3em;
+  box-shadow: 10px 10px 50px black;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.updateProfileFormContainer form div > textarea {
+  width: 100%;
+  height: 5rem;
+  margin-bottom: 1rem;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+.aboutuprofile {
+  width: 100%;
+}
+.aboutuprofile > p {
+  margin-bottom: 2rem;
+}
+.profileLevel2 {
+  margin-bottom: 3rem;
+}
+.profileLevel2 > p {
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+.profileLevel3 > div > p {
+  padding: 0.5rem 1rem;
+}
+.registerAsOwnerContainer,
+.loginOwnerContainer {
+  background: black;
+  height: calc(100vh - 4rem);
+  display: grid;
+  place-items: center;
+}
+.registerAsOwnerContainer > form,
+.loginOwnerContainer > form {
+  display: grid;
+  place-items: center;
+}
+.loginOwnerContainer input:not(.loginOwnerContainer input[type="submit"]),
+.registerAsOwnerContainer
+  input:not(.registerAsOwnerContainer input[type="submit"]) {
+  color: white;
+  margin: 0 0.5rem;
+  width: 250px;
+  height: 2.5rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  padding: 0.5rem;
+}
+
+/* profile owner  */
+.createRoomCard {
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(126, 126, 126, 0.774);
+  backdrop-filter: blur(5px);
+  display: none;
+  place-items: center;
+}
+.createRoomCardForm > h3 {
+  color: white;
+  padding: 0.5rem 0;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+.formProfileContainer {
+  width: 45rem;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 2rem;
+  border-radius: 0.4rem;
+  background: black;
+  box-shadow: 10px 10px 40px black;
+}
+.roomcardinputtags > input:not(.roomcardinputtags > input[type="submit"]) {
+  color: white;
+  width: 45%;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  height: 2.5rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+}
+.createRoomCardForm > textarea {
+  width: 100%;
+  height: 5rem;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 0.5rem;
+  font-family: var(--font-family);
+}
+.religioncreateRoom {
+  display: flex;
+  justify-content: center;
+}
+.roomcardinputtags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.nearbys {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  position: relative;
+  border: 1px solid white;
+  padding: 0.5rem 0;
+}
+.addmore {
+  color: white;
+  position: Absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
+}
+.nearby {
+  display: flex;
+  align-items: Center;
+  min-width: 80px;
+  max-width: fit-content;
+  margin: 0.3rem;
+  background: linear-gradient(45deg, red, orange);
+  border-radius: 1rem;
+}
+.nearby input {
+  height: 2rem;
+  padding: 0.5rem;
+  background: transparent;
+  border: none;
+  width: 100px;
+  outline: none;
+}
+.nearby input::placeholder {
+  color: white;
+}
+.nearby > input:first-child {
+  background: transparent;
+  border: none;
+  width: 150px;
+  color: white;
+}
+.nearby > p {
+  padding-right: 0.5rem;
+  color: white;
+}
+.createRoomFile {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0 1rem 0;
+  align-items: Center;
+}
+.createRoomFile > input[type="file"] {
+  border: 1px solid white;
+  color: white;
+}
+.profileowner {
+  background: black;
+  color: white;
+  padding: 2rem 5rem;
+  min-height: calc(100vh - 4rem);
+}
+.profileownerimg {
+  width: 200px;
+  height: 200px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(45deg, orange, red);
+}
+.profileownerimg img {
+  transition: all 0.3s ease;
+  height: 90%;
+  width: 90%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.ownerprofilelevel1 h1 {
+  padding: 0.5rem 0;
+  border-bottom: 2px solid white;
+}
+.ownerprofilelevel1 p {
+  padding: 0.5rem 0;
+}
+.profileownerlevel1container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.profileowneraboutu {
+  margin: 2rem 0;
+}
+.profileownerContact {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0.5rem 0;
+}
+.profileownerContact > p {
+  margin: 0 2rem;
+}
+.profileownerContact > p > i {
+  display: inline-block;
+  margin: 0 1rem;
+}
+.profileownerbank {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0.5rem 0;
+}
+.profileownerbank > div {
+  display: flex;
+  align-items: Center;
+  margin: 0 2rem;
+}
+.profileownerbank > div > i {
+  margin: 0 0.5rem;
+}
+.profileownerbank > div > b {
+  margin: 0 0.5rem;
+}
+.profileownerbank > div > p {
+  position: relative;
+  overflow: hidden;
+}
+.profileownerbank > div > p:before {
+  content: "";
+  font-size: 0.6rem;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.1rem;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: linear-gradient(45deg, red, orange);
+  z-index: 1;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+.profileownerbank > div > p:hover::before {
+  width: 0;
+}
+.profileownerlinks {
+  padding: 3rem 0 2rem 0;
+}
+.profileownerlinks button {
+  margin-right: 3rem;
+}
+.redirectingmsgandlink {
+  font-size: 0.8rem;
+  color: white;
+  margin: 0.5rem;
+}
+.redirectingmsgandlink a {
+  color: orange;
+}
+.profileownerrooms {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+}
+.profileownerroom {
+  margin: 0.5rem;
+  background: white;
+  color: black;
+  width: 15rem;
+  padding: 1rem 0.5rem;
+  border-radius: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profileownerroomtext {
+  text-align: Center;
+}
+.profileownerroomtext h1 {
+  font-weight: 800;
+}
+.profileownerroomtextlf {
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  margin: 0.5rem;
+}
+.profileownerroomimg {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  border: 4px solid black;
+}
+.profileownerroomimg img {
+  height: 90%;
+  width: 90%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid orange;
+}
+.profileownerroomremoverlink > button {
+  padding: 0.5rem 3rem;
+  border: none;
+  margin: 0.5rem;
+  border-radius: 0.2rem;
+  background: linear-gradient(45deg, red, orange);
+  color: white;
+}
+/* rooms container */
+.newRoomsContainer {
+  background: black;
+  color: white;
+  padding: 2rem;
+}
+.newRooms {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3rem 0;
+}
+.newRoom {
+  width: 17rem;
+  height: 20rem;
+  margin: 1rem;
+  border: 1px solid transparent;
+  transition: border 0.3s ease;
+  margin: 0.5rem;
+  background: rgb(51, 51, 51);
+  position: relative;
+  border-radius: 0.3rem;
+  overflow: hidden;
+}
+.newRoomImg {
+  height: 50%;
+  position: Absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  transition: All 0.5s ease;
+}
+.newRoom:hover .newRoomImg {
+  height: 100%;
+}
+.createOnNewRoom {
+  font-size: 0;
+  transition: All 0.5s ease;
+  background: linear-gradient(45deg, orange, red);
+}
+.newRoomText {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  transition: All 0.5s ease;
+  background: transparent;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50%;
+  padding: 0 1rem;
+  text-align: Center;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+.newRoomText > h1 {
+  padding: 0.5rem;
+}
+.roomname {
+  font-size: 0;
+  transition: all 0.5s ease;
+}
+.newRoom:hover .createOnNewRoom {
+  padding: 0.5rem;
+  border-radius: 1.5rem;
+  font-size: 0.8rem;
+}
+.newRoom:hover .roomname {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+}
+.newRoom:hover .newRoomText {
+  z-index: 1;
+  top: 0%;
+  height: 100%;
+  border-color: red;
+  background: rgba(0, 0, 0, 0.753);
+  backdrop-filter: blur(2px);
+}
+.newRoomOwner {
+  display: flex;
+  align-items: Center;
+  border-radius: 2rem;
+  padding: 0.4rem;
+  width: fit-content;
+}
+.newRoomOwnerImg {
+  border: 2px solid white;
+  height: 3rem;
+  width: 3rem;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.newRoomOwnerImg img {
+  height: 100%;
+}
+.newRoomOwner > p {
+  margin: 0 1rem;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.newRoomOwner > p > span {
+  font-size: 0.6rem;
+}
+
+.asOwnerModal {
+  width: 100%;
+  height: 100vh;
+  display: none;
+  place-items: center;
+  position: fixed;
+  background: rgb(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.owner {
+  z-index: 1000;
+  padding: 2rem;
+  background: linear-gradient(45deg, red, orange);
+  border-radius: 0.5rem;
+  box-shadow: 3px 3px 20px black;
+  width: 30rem;
+}
+.owner > p {
+  margin-bottom: 2rem;
+  color: black;
+}
+.owner > div {
+  display: flex;
+  justify-content: space-between;
+}
+.owner > div > a {
+  background: white;
+  padding: 0.5rem 2rem;
+  border-radius: 0.56rem;
+  color: red;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+.searchByLocation {
+  background: black;
+  color: white;
+  padding: 4rem 2rem;
+}
+.searchBar {
+  background: black;
+  display: flex;
+  justify-content: space-between;
+}
+.searchBar > p {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.searchBar > div {
+  border: 2px solid white;
+  border-radius: 1rem;
+  position: relative;
+}
+.inputgif {
+  position: absolute;
+  height: 0;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.inputgif img {
+  height: 100%;
+}
+.searchBar > div > input {
+  z-index: 1;
+  padding: 0 1rem;
+  font-size: 1rem;
+  background: transparent;
+  outline: none;
+  border: none;
+  color: white;
+  height: 2.5rem;
+  width: 300px;
+}
+.searchBar > div > input:focus + .inputgif {
+  opacity: 1;
+  top: -8rem;
+  height: 8rem;
+}
+#result {
+  padding: 2rem 1rem 0 1rem;
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.resultPreSearchText {
+  color: rgb(207, 207, 207);
+}
+.resultPreSearchText > h3 {
+  text-transform: uppercase;
+  margin: 2rem 0;
+}
+.resultPreSearchText > h1 {
+  padding: 1rem 0;
+  font-size: 3rem;
+  letter-spacing: 5px;
+}
+.noMatchFound {
+  letter-spacing: 5px;
+  color: rgb(207, 207, 207);
+}
+.noMatchFound > h1 {
+  font-size: 3rem;
+}
+.roomdesc {
+  font-size: 0.9rem;
+  padding: 1rem;
+}
+.intro-text {
+  background: rgb(51, 51, 51);
+  color: white;
+  text-align: Center;
+  padding: 2rem 5rem;
+}
+.ownersSection {
+  background: black;
+  padding: 4rem 2rem;
+  color: white;
+}
+.ownersSection > h1 {
+  font-size: 2rem;
+}
+.ownershome {
+  margin: 2rem 2rem 0 2rem;
+  display: flex;
+}
+.ownerhome {
+  padding: 1rem;
+  margin: 1rem;
+  display: grid;
+  place-items: center;
+  color: white;
+}
+.ownerhome > h1 {
+  padding: 1rem;
+}
+.ownerhome > p {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: grey;
+}
+.ownerhomeimg {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  border: 4px solid white;
+}
+.ownerhomeimg > img {
+  border: 4px solid orange;
+  border-radius: 50%;
+  height: 90%;
+  width: 90%;
+}
+.searchByRoom {
+  background: rgb(51, 51, 51);
+  color: white;
+  padding: 2rem;
+  width: 15rem;
+  max-height: 20rem;
+  border-radius: 0.5rem;
+  margin: 1rem;
+  height: fit-content;
+  outline: 2px solid orange;
+  outline-offset: -10px;
+}

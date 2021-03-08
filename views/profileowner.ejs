@@ -1,0 +1,174 @@
+<%- include('partials/header') -%>
+<% var src=""
+if(!profileowner.ownerAvatar.data)
+    src="images/chain.jpg"
+else
+    src="data:image/"+profileowner.ownerAvatar.contentType+";base64,"+profileowner.ownerAvatar.data.toString('base64') 
+%>
+<div class="profileowner">
+    <div class="profileownerlevel1container">
+        <div class="profileownerimg">
+            <img id="profileownerpic" src=<%= src %> alt="profileimage owner">
+        </div>
+        <div class="ownerprofilelevel1">
+            <h1><%= profileowner.residenceName %></h1>
+            <p><%= profileowner.ownerName %></p>
+        </div>
+    </div>
+    <p class="profileowneraboutu"><%- profileowner.ownerAboutu%></p>
+    <div class="profileownerContact">
+        <b>Contact Details :</b>
+        <p>
+            <i class="fas fa-mobile"></i><%= profileowner.ownerPhone %>
+        </p>
+        <p>
+            <i class="far fa-envelope"></i><%= profileowner.ownerEmail %>
+        </p>
+    </div>
+    <p>
+       <b> Religious Belief:</b> <%= profileowner.religion %>
+    </p>
+    <div class="profileownerbank">
+        <b>Bank Details: </b>
+        <div>
+            <b>Account Number:</b> <p><%= profileowner.owneran %></p>
+        </div>
+        <div>
+            <b>IFSC Code: </b><p><%= profileowner.ownerifsc %></p>
+        </div>
+    </div>
+    <div class="profileownerrooms">
+    <% for(var i=0;i<rooms.length;i++){ %>
+        <div class="profileownerroom">
+            <div class="profileownerroomimg">
+                <img src="data:image/<%=rooms[i].roomImg.contentType%>;base64,<%=rooms[i].roomImg.data.toString('base64')%>"> 
+            </div>
+            <div class="profileownerroomtext">
+                <h1 class="gradient-text">
+                    INR <%= rooms[i].rent %>
+                </h1>
+                <p><%= rooms[i].name%></p>
+                <p class="profileownerroomtextlf">Looking for <%= rooms[i].lookingfor %> from <%= rooms[i].religionallowed %></p>
+            </div>
+            <div class="profileownerroomremoverlink">
+                <a class="link linkone" href="removeroom/<%=rooms[i]._id %>">Remove</a>
+            </div>
+        </div>
+    <% } %>
+    </div>
+    <div class="profileownerlinks">
+        <button onclick="showUpdateForm()" class="link linkone">Update Profile</button>
+        <button class="link linkone" onclick="showCreateForm()">Create Room Card</button>
+    </div>
+</div>
+
+<section class="createRoomCard">
+    <button onclick="hideCreateForm(this)">+</button>
+    <div class="formProfileContainer">
+        <form class="createRoomCardForm" method="POST" action="/rooms" enctype="multipart/form-data">
+            <h3>Create Room Card</h3>
+            <div class="roomcardinputtags">
+                <input type="text" name="name" placeholder="Room Name/Number" required>
+                <input type="number" name="countRoom" placeholder="Total number of available rooms" required>
+                <input type="text" name="rent" placeholder="Rent" required>
+                <input type="text" name="address" placeholder="Address" required>
+                <input type="text" name="longitude" placeholder="Longitude(Optional)">
+                <input type="text" name="latitude" placeholder="Latitude(Optional)">
+            </div>
+            <div class="religioncreateRoom" style="margin:0.5rem 0;">
+                <div class="signupYourReligion">
+                    <label class="radioOuterContainer">Boys
+                        <input name="lookingfor" type="checkbox" value="boys" checked="true">
+                        <span class="radioInnerContainer">
+                            <span class="radioSpan">👨🏻</span>
+                        </span>
+                    </label>
+                    <label class="radioOuterContainer">Girls
+                        <input name="lookingfor" type="checkbox" value="girls">
+                        <span class="radioInnerContainer">
+                            <span class="radioSpan">👩🏻</span>
+                        </span>
+                    </label>
+                    <label class="radioOuterContainer">Family
+                        <input name="lookingfor" type="checkbox" value="family">
+                        <span class="radioInnerContainer">
+                            <span class="radioSpan">👪</span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <textarea name="description"placeholder="Tell us something more about your room"></textarea>
+            <div class="religioncreateRoom">
+                <div class="signupYourReligion">
+                    <label class="radioOuterContainer">Hinduism
+                        <input name="religion" type="checkbox" checked="true" value="hinduism">
+                        <span class="radioInnerContainer">
+                            <span class="radioSpan"><i class="fas fa-om"></i></span>
+                        </span>
+                    </label>
+                    <label class="radioOuterContainer">Sikhism
+                        <input name="religion" type="checkbox" value="sikhism">
+                        <span class="radioInnerContainer">
+                            <span class="radioSpan"><i class="fas fa-khanda"></i></span>
+                        </span>
+                    </label>
+                    <label class="radioOuterContainer">Christian
+                        <input name="religion" type="checkbox" value="christian">
+                        <span class="radioInnerContainer">
+                            <span class="radioSpan"><i class="fas fa-cross"></i></span>
+                        </span>
+                    </label>
+                    <label class="radioOuterContainer">Islam
+                        <input name="religion" type="checkbox" value="islam">
+                        <span class="radioInnerContainer">
+                            <span class="radioSpan"><i class="fas fa-kaaba"></i></span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="nearbys" id="specific-details">
+                <p class="addmore" onclick="addMoreSpecificDetail(this)"><i class="fas fa-plus"></i></p>
+                <div class="nearby">
+                    <input type="text" name="nearByPlace" placeholder="Near By Place " required>
+                    <input type="text" name="nearByDistance" placeholder="Distance" required>
+                    <p onclick="removeSpecificDetail(this)"><i class="fas fa-times"></i></p>
+                </div>
+            </div>
+            <div class="createRoomFile">
+                <input type="file" name="roomImg" >
+                <input type="submit" value="Publish">
+            </div>
+        </form>
+    </div>
+</section>
+<!-- UPDATE PROFILE PAGE -->
+<section class="updateProfileFormContainer">
+    <button onclick='hideUpdateProfileFormContainer(this)'>+</button>
+    <form method="POST" action="/profileowner/update" enctype="multipart/form-data">
+        <div>
+            <textarea name="aboutu"></textarea>
+        </div>
+        <input type="file" name="avatarOwner" accept="image/*">
+        <input type="Submit" value="Update">
+    </form>
+</section>
+
+
+<script>
+    function hideCreateForm(THIS){
+        THIS.parentElement.style.display="none";
+    }
+    function showCreateForm(){
+        document.querySelector(".createRoomCard").style.display="grid"
+    }
+    function hideUpdateProfileFormContainer(THIS) {
+            THIS.parentElement.style.display = "none"
+        }
+    function showUpdateForm() {
+        document.querySelector(".updateProfileFormContainer").style.display = "grid"
+    }
+</script>
+<script src="./js/arrayInput.js"></script>
+</body>
+</html>

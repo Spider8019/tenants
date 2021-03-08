@@ -111,7 +111,15 @@
             </div>
         </section>
 
-
+        <div class="intro-text">
+            <h4>You are accesing it from Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut vitae eos ducimus facere
+                nam cor</h4>
+            <br>
+            <h2>
+                Thanks to all <%= users.length %> users for your support and love !!! <span id="randomEmoji"></span>
+            </h2>
+        
+        </div>
 
 <!-- fixed modal boxes -->
 <section class="asOwnerModal">
@@ -200,6 +208,10 @@
         document.getElementById("longitude").innerHTML=position.coords.longitude
         document.getElementById("latitude").innerHTML = position.coords.latitude
     }
-
+    //get random emojis
+    var emojis = ['😄', '😃', '😀', '😊', '☺', '😉', '😍', '😘', '😚', '😗', '😙', '😜', '😝', '😛', '😳', '😁', '😔', '😌', '😒', '😞', '😣', '😢', '😂']
+    setInterval(function () {
+        document.getElementById("randomEmoji").innerHTML = emojis[Math.floor(Math.random() * emojis.length)]
+    }, 500)
 </script>
 </html>

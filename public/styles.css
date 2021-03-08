@@ -39,6 +39,10 @@ a {
 .material-icons {
   color: white;
 }
+#randomEmoji {
+  padding: 0 0.5rem;
+  width: 30px;
+}
 /* repeating classes */
 .gradient-text {
   background: -webkit-linear-gradient(45deg, red, orange);
@@ -301,7 +305,7 @@ nav > a {
 .signupForm > div {
   display: flex;
   flex-wrap: wrap;
-  justify-content:Center;
+  justify-content: Center;
 }
 .signupForm > div > input:not(.signupForm > div > input[type="submit"]) {
   margin: 0.5rem;

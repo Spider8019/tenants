@@ -43,6 +43,7 @@ var upload = multer({ storage: storage });
 app.route("/")
     .get(async(req,res)=>{
         try{
+            var users=await usersModel.find({})
             var newRooms=await roomsModel.find({}).sort({createdAt:-1})
             var owners=await ownersModel.find({})
             var newOwners=[]
@@ -50,7 +51,7 @@ app.route("/")
                 var owner=await ownersModel.findOne({_id:newRooms[i].ownerid})
                 newOwners.push(owner)
             }
-            res.render("home",{newRooms,newOwners,owners})
+            res.render("home",{newRooms,newOwners,owners,users})
         }catch(error){
             res.send(`there is an error ${error}`)
         }

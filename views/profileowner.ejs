@@ -1,66 +1,89 @@
-<%- include('partials/header') -%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- jquery google cdn -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- animate css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <title>Home</title>
+</head>
 <% var src=""
-if(!profileowner.ownerAvatar.data)
-    src="images/chain.jpg"
-else
-    src="data:image/"+profileowner.ownerAvatar.contentType+";base64,"+profileowner.ownerAvatar.data.toString('base64') 
-%>
-<div class="profileowner">
-    <div class="profileownerlevel1container">
-        <div class="profileownerimg">
-            <img id="profileownerpic" src=<%= src %> alt="profileimage owner">
-        </div>
-        <div class="ownerprofilelevel1">
-            <h1><%= profileowner.residenceName %></h1>
-            <p><%= profileowner.ownerName %></p>
-        </div>
-    </div>
-    <p class="profileowneraboutu"><%- profileowner.ownerAboutu%></p>
-    <div class="profileownerContact">
-        <b>Contact Details :</b>
-        <div>
-            <p>
-                <i class="fas fa-mobile"></i><%= profileowner.ownerPhone %>
-            </p>
-            <p>
-                <i class="far fa-envelope"></i><%= profileowner.ownerEmail %>
-            </p>
-        </div>
-    </div>
-    <p>
-       <b> Religious Belief:</b> <%= profileowner.religion %>
-    </p>
-    <div class="profileownerbank">
-        <b>Bank Details: </b>
-        <div>
-            <b>Account Number:</b> <p><%= profileowner.owneran %></p>
-        </div>
-        <div>
-            <b>IFSC Code: </b><p><%= profileowner.ownerifsc %></p>
-        </div>
-    </div>
-    <div class="profileownerrooms">
-    <% for(var i=0;i<rooms.length;i++){ %>
-        <div class="profileownerroom">
-            <div class="profileownerroomimg">
-                <img src="data:image/<%=rooms[i].roomImg.contentType%>;base64,<%=rooms[i].roomImg.data.toString('base64')%>"> 
+ if(!profileowner.ownerAvatar.data)
+  src="images/chain.jpg" 
+  else 
+  src="data:image/"+profileowner.ownerAvatar.contentType+";base64,"+profileowner.ownerAvatar.data.toString('base64') %>
+
+<body>
+<div class="firstProfileOwnerContainer">
+    <div class="sideNavigationBar">
+            <button onclick="showUpdateForm()" >Update Profile</button>
+            <button onclick="showCreateForm()">Create Room Card</button>
+    </div>   
+    <div class="profileowner">
+        <div class="profileownerlevel1container">
+            <div class="profileownerimg">
+                <img id="profileownerpic" src=<%= src %> alt="profileimage owner">
             </div>
-            <div class="profileownerroomtext">
-                <h1 class="gradient-text">
-                    INR <%= rooms[i].rent %>
-                </h1>
-                <p><%= rooms[i].name%></p>
-                <p class="profileownerroomtextlf">Looking for <%= rooms[i].lookingfor %> from <%= rooms[i].religionallowed %></p>
-            </div>
-            <div class="profileownerroomremoverlink">
-                <a class="link linkone" href="removeroom/<%=rooms[i]._id %>">Remove</a>
+            <div class="ownerprofilelevel1">
+                <h1><%= profileowner.residenceName %></h1>
+                <p><%= profileowner.ownerName %></p>
             </div>
         </div>
-    <% } %>
-    </div>
-    <div class="profileownerlinks">
-        <button onclick="showUpdateForm()" class="link linkone">Update Profile</button>
-        <button class="link linkone" onclick="showCreateForm()">Create Room Card</button>
+        <p class="profileowneraboutu"><%- profileowner.ownerAboutu%></p>
+        <div class="profileownerContact">
+            <b>Contact Details :</b>
+            <div>
+                <p>
+                    <i class="fas fa-mobile"></i><%= profileowner.ownerPhone %>
+                </p>
+                <p>
+                    <i class="far fa-envelope"></i><%= profileowner.ownerEmail %>
+                </p>
+            </div>
+        </div>
+        <p>
+        <b> Religious Belief:</b> <%= profileowner.religion %>
+        </p>
+        <div class="profileownerbank">
+            <b>Bank Details: </b>
+            <div>
+                <b>Account Number:</b> <p><%= profileowner.owneran %></p>
+            </div>
+            <div>
+                <b>IFSC Code: </b><p><%= profileowner.ownerifsc %></p>
+            </div>
+        </div>
+        <div class="profileownerrooms">
+        <% for(var i=0;i<rooms.length;i++){ %>
+            <div class="profileownerroom">
+                <div class="profileownerroomimg">
+                    <img src="data:image/<%=rooms[i].roomImg.contentType%>;base64,<%=rooms[i].roomImg.data.toString('base64')%>"> 
+                </div>
+                <div class="profileownerroomtext">
+                    <h1 class="gradient-text">
+                        INR <%= rooms[i].rent %>
+                    </h1>
+                    <p><%= rooms[i].name%></p>
+                    <p class="profileownerroomtextlf">Looking for <%= rooms[i].lookingfor %> from <%= rooms[i].religionallowed %></p>
+                </div>
+                <div class="profileownerroomremoverlink">
+                    <a class="link linkone" href="removeroom/<%=rooms[i]._id %>">Remove</a>
+                </div>
+            </div>
+        <% } %>
+        </div>
+        <div class="profileownerlinks">
+
+        </div>
     </div>
 </div>
 

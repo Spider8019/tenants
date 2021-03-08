@@ -5,8 +5,9 @@
   margin: 0;
   box-sizing: border-box;
 }
-.pinky {
-  background: orange;
+body {
+  color: white;
+  background: black;
 }
 /* global variables */
 :root {
@@ -500,8 +501,17 @@ nav > a {
   border: 1px solid white;
   color: white;
 }
+.sideNavigationBar {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  background: rgb(51, 51, 51);
+}
+.firstProfileOwnerContainer {
+  display: flex;
+}
 .profileowner {
-  background: black;
+  flex: 1;
   color: white;
   padding: 2rem 5rem;
   min-height: calc(100vh - 4rem);
@@ -668,7 +678,8 @@ nav > a {
   .profileownerContact > div {
     padding: 0.5rem;
     display: flex;
-    color: rgb(51, 51, 51);
+    flex-wrap: wrap;
+    color: grey;
   }
   .profileowneraboutu {
     margin: 0;
@@ -677,7 +688,7 @@ nav > a {
     margin: 1rem 0;
   }
   .profileownerbank div {
-    color: rgb(51, 51, 51);
+    color: grey;
     display: flex;
     align-items: Center;
     margin: 0.5rem;

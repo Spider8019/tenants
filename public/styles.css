@@ -933,14 +933,17 @@ nav > a {
 .owner {
   z-index: 1000;
   padding: 2rem;
-  background: linear-gradient(45deg, red, orange);
+  background: url("./images/build.jpg") no-repeat center;
+  background-size: cover;
   border-radius: 0.5rem;
   box-shadow: 3px 3px 20px black;
   width: 30rem;
 }
 .owner > p {
   margin-bottom: 2rem;
-  color: black;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
 }
 .owner > div {
   display: flex;

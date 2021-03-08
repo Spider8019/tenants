@@ -228,7 +228,6 @@ app.route("/signup")
                 religion:req.body.religion
             })
         var token=await obj.generateAuthToken()
-        console.log(token)
         res.cookie("jwt",token,{expires:new Date(Date.now()+60000000),httpOnly:true})
 
         await obj.save()
@@ -252,13 +251,10 @@ app.route("/login")
             var user=await usersModel.findOne({
                 email:req.body.email
             })
-            console.log(user)
             var isMatch=await bcrypt.compare(req.body.password,user.password)
-            console.log(isMatch)
             if(isMatch)
             {
                 var token =await user.generateAuthToken()
-                console.log(token)
                 res.cookie("jwt",token,{expires:new Date(Date.now()+600000000),httpOnly:true})
 
                 res.redirect("/profile")
@@ -272,7 +268,7 @@ app.get("/logout",auth,async function(req,res){
      res.clearCookie("jwt")      
      req.user.tokens=[]
      req.user.save()
-     res.redirect("/login")
+     res.redirect("/")
 
 })
 

@@ -14,7 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- animate css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <title>Home</title>
+    <title>Profile Owner</title>
 </head>
 <body>
 <% var src=""
@@ -31,11 +31,12 @@
             <div class="basicNavProfileOwnerLinks" >
                 <button onclick="showUpdateForm()" >Update Profile</button>
                 <button onclick="showCreateForm()">Create Room Card</button>
+                <a href="/logout">Logout from all Deivices</a>
             </div>
             <button class="closeNavigationProfile">+</button>
     </div>   
     <div class="profileowner">
-        <button class="showProfileOwnerNav"><i class="fas fa-angle-double-right"></i></button>
+        <button class="showProfileOwnerNav">>></button>
         <div class="profileownerlevel1container">
             <div class="profileownerimg">
                 <img id="profileownerpic" src=<%= src %> alt="profileimage owner">
@@ -88,9 +89,7 @@
             </div>
         <% } %>
         </div>
-        <div class="profileownerlinks">
-
-        </div>
+        <p class="profileFooter">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque qui minima minus, totam harum perspiciatis dolorum quae nobis neque obcaecati, pariatur, blanditiis officia dolores quod quidem sequi id sunt! Nobis?<br><br>Spider8019 presents Tenants.com</p>
     </div>
 </div>
 

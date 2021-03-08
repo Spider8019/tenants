@@ -525,8 +525,11 @@ nav > a {
   justify-content: space-between;
   background: rgb(51, 51, 51);
 }
-.basicNavProfileOwnerLinks > button {
+.basicNavProfileOwnerLinks > button,
+.basicNavProfileOwnerLinks > a {
   border: none;
+  display: inline-block;
+  text-align: Center;
   color: white;
   background: transparent;
   padding: 0.5rem;
@@ -535,7 +538,8 @@ nav > a {
   outline: none;
   transition: all 0.4s ease;
 }
-.basicNavProfileOwnerLinks button:hover {
+.basicNavProfileOwnerLinks button:hover,
+.basicNavProfileOwnerLinks a:hover {
   background: black;
   color: orange;
 }
@@ -708,7 +712,7 @@ nav > a {
 .profileownerrooms {
   display: flex;
   flex-wrap: wrap;
-  padding: 2rem 0;
+  padding: 2rem 0 0 0;
 }
 .profileownerroom {
   margin: 0.5rem;
@@ -1107,4 +1111,12 @@ nav > a {
   height: fit-content;
   outline: 2px solid orange;
   outline-offset: -10px;
+}
+.profileFooter {
+  font-size: 0.8rem;
+  color: grey;
+  margin: 3rem 0rem 0 0rem;
+  padding: 0.5rem;
+  text-align: Center;
+  border-top: 1px solid grey;
 }

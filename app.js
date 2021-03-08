@@ -264,6 +264,13 @@ app.route("/login")
             res.status(400).send(`user is not find ${e}`)
         }
     })
+app.get("/logoutOwner",authowner,async function(req,res){
+     res.clearCookie("jwt")      
+     req.user.tokens=[]
+     req.user.save()
+     res.redirect("/")
+
+})
 app.get("/logout",auth,async function(req,res){
      res.clearCookie("jwt")      
      req.user.tokens=[]

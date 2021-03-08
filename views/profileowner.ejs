@@ -16,19 +16,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <title>Home</title>
 </head>
+<body>
 <% var src=""
  if(!profileowner.ownerAvatar.data)
   src="images/chain.jpg" 
   else 
   src="data:image/"+profileowner.ownerAvatar.contentType+";base64,"+profileowner.ownerAvatar.data.toString('base64') %>
 
-<body>
 <div class="firstProfileOwnerContainer">
     <div class="sideNavigationBar">
-            <button onclick="showUpdateForm()" >Update Profile</button>
-            <button onclick="showCreateForm()">Create Room Card</button>
+            <div class="basicNavOwnerText">
+                <p>Spider8019 presents<br><span class="gradient-text">Tenants.com</span><br><text>Century</text></p>
+            </div>
+            <div class="basicNavProfileOwnerLinks" >
+                <button onclick="showUpdateForm()" >Update Profile</button>
+                <button onclick="showCreateForm()">Create Room Card</button>
+            </div>
+            <button class="closeNavigationProfile">+</button>
     </div>   
     <div class="profileowner">
+        <button class="showProfileOwnerNav"><i class="fas fa-angle-double-right"></i></button>
         <div class="profileownerlevel1container">
             <div class="profileownerimg">
                 <img id="profileownerpic" src=<%= src %> alt="profileimage owner">
@@ -181,6 +188,14 @@
 
 
 <script>
+    $(document).ready(function(){
+        $(".showProfileOwnerNav").click(function(){
+            $(".sideNavigationBar").css("left","0")
+        })
+        $(".closeNavigationProfile").click(function(){
+            $(".sideNavigationBar").css("left","-100vw")
+        })
+    })
     function hideCreateForm(THIS){
         THIS.parentElement.style.display="none";
     }

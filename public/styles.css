@@ -392,7 +392,7 @@ nav > a {
 
 /* profile owner  */
 .createRoomCard {
-  z-index: 5;
+  z-index: 11;
   position: fixed;
   top: 0;
   left: 0;
@@ -410,7 +410,8 @@ nav > a {
   margin-bottom: 2rem;
 }
 .formProfileContainer {
-  width: 45rem;
+  margin: 2rem;
+  width: 60vw;
   max-height: 80vh;
   overflow-y: auto;
   padding: 2rem;
@@ -501,11 +502,106 @@ nav > a {
   border: 1px solid white;
   color: white;
 }
+@media screen and (max-width: 990px) {
+  .formProfileContainer {
+    width: 100vw;
+    margin: 0;
+  }
+  .updateProfileFormContainer form {
+    width: 100vw;
+    margin: 0;
+  }
+}
+
+/* side navigation bar */
 .sideNavigationBar {
-  width: 200px;
+  width: 250px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: hidden;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background: rgb(51, 51, 51);
+}
+.basicNavProfileOwnerLinks > button {
+  border: none;
+  color: white;
+  background: transparent;
+  padding: 0.5rem;
+  width: 100%;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.4s ease;
+}
+.basicNavProfileOwnerLinks button:hover {
+  background: black;
+  color: orange;
+}
+.basicNavProfileOwnerLinks {
+  flex: 1;
+}
+.closeNavigationProfile {
+  outline: none;
+  font-size: 1.5rem;
+  align-self: center;
+  width: 30px;
+  height: 30px;
+  margin: 0.5rem 0;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  transform: rotate(45deg);
+  color: white;
+  transition: all 0.5s ease;
+  display: none;
+}
+.closeNavigationProfile:hover {
+  color: red;
+  background: white;
+}
+.basicNavOwnerText {
+  font-size: 0.7rem;
+  padding: 2rem;
+  color: rgb(206, 206, 206);
+}
+.basicNavOwnerText p > span {
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+  padding: 0.5rem 0;
+}
+.basicNavOwnerText p > text {
+  text-align: right;
+  display: block;
+}
+.showProfileOwnerNav {
+  position: Absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  display: none;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1rem;
+}
+@media screen and (max-width: 990px) {
+  .sideNavigationBar {
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    width: 100%;
+    z-index: 10;
+    transition: All 0.5s ease;
+  }
+  .closeNavigationProfile {
+    display: block;
+  }
+  .showProfileOwnerNav {
+    display: block;
+  }
 }
 .firstProfileOwnerContainer {
   display: flex;

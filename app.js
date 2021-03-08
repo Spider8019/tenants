@@ -17,7 +17,7 @@ app.set("view engine", "ejs");
 
 const mongoose=require('mongoose')
 
-mongoose.connect("mongodb+srv://spider8019official:spider8019official@cluster0.tljh0.mongodb.net/rent?retryWrites=true&w=majority",{useNewUrlParser:true,useCreateIndex:true})
+mongoose.connect("mongodb+srv://spider8019official:spider8019official@cluster0.tljh0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{useNewUrlParser:true,useCreateIndex:true})
 
 var usersModel=require("./mongoose/user.js")
 var ownersModel=require("./mongoose/owner.js")

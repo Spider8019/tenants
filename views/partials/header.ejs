@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- google icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
@@ -16,10 +18,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <title>Home</title>
 </head>
-
+<script>
+    $(document).ready(function(){
+        $(".bars").click(function(){
+            if($("nav").css("display")=="flex")
+             $("nav").css("display","none")
+            else 
+             $("nav").css("display","flex")
+        })
+    })
+</script>
 <body>
     <div id="navbar">
-        <p>TENETS</p>
+        <div class="headerlogo">
+           <p>TENANTS</p>
+           <i class="material-icons bars">menu</i>
+        </div>
         <nav>
             <a href="/">Home</a>
             <a href="/signup">Signup</a>

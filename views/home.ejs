@@ -23,7 +23,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nesciunt deleniti atque hic repudiandae,</p>
                 <div class="introTextLinks">
                     <BUTTON class="linkone link"id="startAsOwner" onclick="asOwnerModal()" >As Owner</BUTTON>
-                    <BUTTON class="linktwo link">As Tenants</BUTTON>
+                    <BUTTON class="linktwo link" id="startAsTenant">As Tenants</BUTTON>
                 </div>
             </div>
         </div>
@@ -69,15 +69,7 @@
                 </div>
             </div>
         </div>
-        <section class="asOwnerModal">
-            <div class="owner">
-                <p>As owner</p>
-                <div>
-                    <a href="/loginowner">Login</a>
-                    <a href="/registerasowner">Signup</a>
-                </div>
-            </div>
-        </section>
+
         
         <section class="searchByLocation">
             <div class="searchBar">
@@ -118,6 +110,29 @@
                 <% } %>
             </div>
         </section>
+
+
+
+<!-- fixed modal boxes -->
+<section class="asOwnerModal">
+    <div class="owner">
+        <p>As owner</p>
+        <div>
+            <a href="/loginowner">Login</a>
+            <a href="/registerasowner">Signup</a>
+        </div>
+    </div>
+</section>
+<section class="astenantsModal">
+    <div class="owner">
+        <p>As Tenants</p>
+        <div>
+            <a href="/login">Login</a>
+            <a href="/signup">Signup</a>
+        </div>
+    </div>
+</section>
+
 </body>
 
 
@@ -157,14 +172,20 @@
             $("#startAsOwner").click(function(){
                 $(".asOwnerModal").css("display","grid")
             })
+            $("#startAsTenant").click(function () {
+                $(".astenantsModal").css("display", "grid")
+            })
         })
     // When the user clicks anywhere outside of the modal, close it
+
     window.onclick = function (event) {
-        if (event.target ==document.querySelector(".asOwnerModal")) {
+        if (event.target == document.querySelector(".astenantsModal")) {
+            document.querySelector(".astenantsModal").style.display = "none";
+        }
+        if (event.target == document.querySelector(".asOwnerModal")) {
             document.querySelector(".asOwnerModal").style.display = "none";
         }
-    }
-
+    }   
     // getting the position of user 
     var longitude="",latitude=""
         if (navigator.geolocation) {

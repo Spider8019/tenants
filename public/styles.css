@@ -542,12 +542,14 @@ nav > a {
   flex-wrap: wrap;
   margin: 0.5rem 0;
 }
-.profileownerContact > p {
-  margin: 0 2rem;
+.profileownerContact p {
+  margin: 0 1rem;
 }
-.profileownerContact > p > i {
+.profileownerContact p > i {
   display: inline-block;
   margin: 0 1rem;
+  width: 20px;
+  text-align: Center;
 }
 .profileownerbank {
   display: flex;
@@ -558,9 +560,6 @@ nav > a {
   display: flex;
   align-items: Center;
   margin: 0 2rem;
-}
-.profileownerbank > div > i {
-  margin: 0 0.5rem;
 }
 .profileownerbank > div > b {
   margin: 0 0.5rem;
@@ -650,6 +649,36 @@ nav > a {
   border-radius: 0.2rem;
   background: linear-gradient(45deg, red, orange);
   color: white;
+}
+@media screen and (max-width: 990px) {
+  .profileownerlevel1container {
+    flex-direction: column;
+  }
+  .ownerprofilelevel1 {
+    padding: 2rem;
+    text-align: Center;
+  }
+  .profileownerContact {
+    margin: 1rem 0;
+    display: flex;
+  }
+  .profileownerContact > div {
+    padding: 0.5rem;
+    display: flex;
+    color: rgb(51, 51, 51);
+  }
+  .profileownerbank {
+    margin: 1rem 0;
+  }
+  .profileownerbank div {
+    color: rgb(51, 51, 51);
+    display: flex;
+    align-items: Center;
+    margin: 0.5rem;
+  }
+  .profileownerrooms {
+    justify-content: Center;
+  }
 }
 /* rooms container */
 .newRoomsContainer {

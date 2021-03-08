@@ -117,6 +117,7 @@ app.route("/registerasowner")
             res.cookie("jwt",token,{expires:new Date(Date.now()+60000000),httpOnly:true})
 
             await obj.save()
+            res.redirect("/profileowner")
 
         }catch(error){res.send(`there is an error ${error}`)}
     })
